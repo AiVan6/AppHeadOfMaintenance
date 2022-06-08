@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:rowCount="1"
+    android:columnCount="2">
+
+    <Spinner
+        android:id="@+id/SpinnerPanel"
+        android:layout_width="match_parent"
+        android:layout_column="1"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="0"
+        android:popupBackground="@color/White"
+        android:spinnerMode="dropdown"
+        android:minHeight="48dp"
+        />
+
+</GridLayout>

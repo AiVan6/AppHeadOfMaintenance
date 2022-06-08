@@ -1,0 +1,314 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="romanow.abc.android"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:4:5-7:11
+8        android:minSdkVersion="24"
+8-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:6:9-35
+9        android:targetSdkVersion="31" />
+9-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:5:9-38
+10
+11    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+11-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:9:5-80
+11-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:9:22-78
+12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+12-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:10:5-79
+12-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:10:22-77
+13    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+13-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:11:5-81
+13-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:11:22-79
+14    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+14-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:12:5-81
+14-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:12:22-78
+15    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+15-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:13:5-79
+15-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:13:22-76
+16    <!-- <uses-permission android:name="android.permission.SET_TIME_ZONE" /> -->
+17    <!-- <uses-permission android:name="android.permission.SET_TIME_ZONE" /> -->
+18    <uses-permission android:name="android.permission.BLUETOOTH" />
+18-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:16:5-68
+18-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:16:22-65
+19    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+19-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:17:5-74
+19-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:17:22-71
+20    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+20-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:18:5-76
+20-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:18:22-73
+21    <!-- uses-permission android:name="android.permission.READ_PHONE_STATE"/ -->
+22    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+22-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:20:5-70
+22-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:20:22-68
+23
+24    <uses-feature
+24-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:21:5-94
+25        android:name="android.hardware.bluetooth_le"
+25-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:21:19-65
+26        android:required="true" />
+26-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:21:66-91
+27    <uses-feature android:name="android.hardware.location.gps" />
+27-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:22:5-66
+27-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:22:19-63
+28    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+29    <!-- <uses-sdk android:minSdkVersion="14" /> -->
+30    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+30-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:13:5-79
+30-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:13:22-76
+31    <uses-permission android:name="android.permission.INTERNET" />
+31-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:14:5-67
+31-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:14:22-64
+32    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+32-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:16:5-76
+32-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:16:22-73
+33    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+33-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:17:5-76
+33-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:17:22-73
+34    <uses-permission android:name="android.permission.WAKE_LOCK" />
+34-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:19:5-68
+34-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:19:22-65
+35    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/ -->
+35-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:20:5-81
+35-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:20:22-78
+36    <application
+36-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:24:5-59:19
+37        android:allowBackup="true"
+37-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:26:9-35
+38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+38-->[androidx.core:core:1.7.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\ed05d21e58fbb8904f82e37be016cb5d\core-1.7.0\AndroidManifest.xml:24:18-86
+39        android:debuggable="true"
+40        android:icon="@drawable/brs"
+40-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:27:9-37
+41        android:label="Каркас"
+41-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:28:9-31
+42        android:networkSecurityConfig="@xml/network_security_config"
+42-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:25:9-69
+43        android:requestLegacyExternalStorage="true"
+43-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:32:9-52
+44        android:roundIcon="@drawable/brs"
+44-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:29:9-42
+45        android:supportsRtl="true"
+45-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:30:9-35
+46        android:testOnly="true"
+47        android:theme="@style/AppTheme" >
+47-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:31:9-40
+48        <activity
+48-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:33:9-46:20
+49            android:name="romanow.abc.android.MainActivity"
+49-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:34:13-60
+50            android:label="Каркас"
+50-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:35:13-35
+51            android:screenOrientation="portrait"
+51-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:36:13-49
+52            android:theme="@style/AppTheme.NoActionBar" >
+52-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:37:13-56
+53            <intent-filter>
+53-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:38:13-41:29
+54                <action android:name="android.intent.action.ACTION-VIEW" />
+54-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:39:17-76
+54-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:39:25-73
+55
+56                <category android:name="android.intent.category.LAUNCHER" />
+56-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:40:17-77
+56-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:40:27-74
+57            </intent-filter>
+58            <intent-filter>
+58-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:42:13-45:29
+59                <action android:name="android.intent.action.MAIN" />
+59-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:43:17-69
+59-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:43:25-66
+60
+61                <category android:name="android.intent.category.LAUNCHER" />
+61-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:40:17-77
+61-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:40:27-74
+62            </intent-filter>
+63        </activity>
+64        <activity
+64-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:47:9-116
+65            android:name="romanow.abc.android.FullScreenGraph"
+65-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:47:19-69
+66            android:screenOrientation="reverseLandscape" />
+66-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:47:70-114
+67        <!-- <activity android:name="romanow.abc.android.yandexmap.MapFilesActivity" android:screenOrientation="portrait"/> -->
+68        <activity
+68-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:49:9-117
+69            android:name="romanow.abc.android.yandexmap.MapActivity340"
+69-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:49:19-78
+70            android:screenOrientation="portrait" />
+70-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:49:79-115
+71
+72        <provider
+73            android:name="androidx.core.content.FileProvider"
+73-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:51:13-62
+74            android:authorities="romanow.abc.android"
+74-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:52:13-51
+75            android:exported="false"
+75-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:53:13-37
+76            android:grantUriPermissions="true" >
+76-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:54:13-47
+77            <meta-data
+77-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:55:13-57:63
+78                android:name="android.support.FILE_PROVIDER_PATHS"
+78-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:56:17-67
+79                android:resource="@xml/file_provider_paths" />
+79-->C:\gitProga\my\AppHeadOfMaintenance1\app\src\main\AndroidManifest.xml:57:17-60
+80        </provider>
+81
+82        <service
+82-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:17:9-23:19
+83            android:name="com.google.firebase.components.ComponentDiscoveryService"
+83-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:18:13-84
+84            android:directBootAware="true"
+84-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\559156e16cdf0b5fbcae4c6d41b73b58\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
+85            android:exported="false" >
+85-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:19:13-37
+86            <meta-data
+86-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:20:13-22:85
+87                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+87-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:21:17-111
+88                android:value="com.google.firebase.components.ComponentRegistrar" />
+88-->[com.google.firebase:firebase-firestore:23.0.2] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\8efcdc1e11a88c71cc83579ba740894d\jetified-firebase-firestore-23.0.2\AndroidManifest.xml:22:17-82
+89        </service>
+90
+91        <meta-data
+91-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:25:9-27:38
+92            android:name="yandex.maps.runtime.stl.linkage"
+92-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:26:13-59
+93            android:value="static" />
+93-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:27:13-35
+94
+95        <service
+95-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:29:9-32:72
+96            android:name="com.evernote.android.job.patched.internal.v21.PlatformJobService"
+96-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:30:13-92
+97            android:exported="false"
+97-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:31:13-37
+98            android:permission="android.permission.BIND_JOB_SERVICE" />
+98-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:32:13-69
+99        <service
+99-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:33:9-36:72
+100            android:name="com.evernote.android.job.patched.internal.v14.PlatformAlarmService"
+100-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:34:13-94
+101            android:exported="false"
+101-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:35:13-37
+102            android:permission="android.permission.BIND_JOB_SERVICE" />
+102-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:36:13-69
+103        <service
+103-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:37:9-39:40
+104            android:name="com.evernote.android.job.patched.internal.v14.PlatformAlarmServiceExact"
+104-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:38:13-99
+105            android:exported="false" />
+105-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:39:13-37
+106
+107        <receiver
+107-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:41:9-50:20
+108            android:name="com.evernote.android.job.patched.internal.v14.PlatformAlarmReceiver"
+108-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:42:13-95
+109            android:exported="false" >
+109-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:43:13-37
+110            <intent-filter>
+110-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:44:13-49:29
+111
+112                <!-- Keep the filter for legacy intents -->
+113                <action android:name="com.evernote.android.job.patched.internal.v14.RUN_JOB" />
+113-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:47:17-96
+113-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:47:25-93
+114                <action android:name="net.vrallev.android.job.v14.RUN_JOB" />
+114-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:48:17-78
+114-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:48:25-75
+115            </intent-filter>
+116        </receiver>
+117        <receiver
+117-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:51:9-60:20
+118            android:name="com.evernote.android.job.patched.internal.JobBootReceiver"
+118-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:52:13-85
+119            android:exported="false" >
+119-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:53:13-37
+120            <intent-filter>
+120-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:54:13-59:29
+121                <action android:name="android.intent.action.BOOT_COMPLETED" />
+121-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:55:17-79
+121-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:55:25-76
+122                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+122-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:56:17-82
+122-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:56:25-79
+123                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+123-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:57:17-82
+123-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:57:25-79
+124                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+124-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:58:17-84
+124-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:58:25-81
+125            </intent-filter>
+126        </receiver>
+127
+128        <service
+128-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:62:9-65:72
+129            android:name="com.evernote.android.job.patched.internal.JobRescheduleService"
+129-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:63:13-90
+130            android:exported="false"
+130-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:64:13-37
+131            android:permission="android.permission.BIND_JOB_SERVICE" />
+131-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:65:13-69
+132        <service
+132-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:66:9-69:72
+133            android:name="com.yandex.runtime.connectivity.internal.ConnectivityService"
+133-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:67:13-88
+134            android:exported="true"
+134-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:68:13-36
+135            android:permission="android.permission.BIND_JOB_SERVICE" />
+135-->[com.yandex.android:maps.mobile:4.0.0-lite] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\58dc4105bd50e32c6aa940e9d9becb69\maps.mobile-4.0.0-lite\AndroidManifest.xml:69:13-69
+136
+137        <activity
+137-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\bd8a4935a17dde33dc1d62d4f9914d3b\play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+138            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+138-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\bd8a4935a17dde33dc1d62d4f9914d3b\play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+139            android:exported="false"
+139-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\bd8a4935a17dde33dc1d62d4f9914d3b\play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+140            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+140-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\bd8a4935a17dde33dc1d62d4f9914d3b\play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+141
+142        <provider
+142-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\559156e16cdf0b5fbcae4c6d41b73b58\jetified-firebase-common-20.0.0\AndroidManifest.xml:26:9-31:39
+143            android:name="com.google.firebase.provider.FirebaseInitProvider"
+143-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\559156e16cdf0b5fbcae4c6d41b73b58\jetified-firebase-common-20.0.0\AndroidManifest.xml:27:13-77
+144            android:authorities="romanow.abc.android.firebaseinitprovider"
+144-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\559156e16cdf0b5fbcae4c6d41b73b58\jetified-firebase-common-20.0.0\AndroidManifest.xml:28:13-72
+145            android:directBootAware="true"
+145-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\559156e16cdf0b5fbcae4c6d41b73b58\jetified-firebase-common-20.0.0\AndroidManifest.xml:29:13-43
+146            android:exported="false"
+146-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\559156e16cdf0b5fbcae4c6d41b73b58\jetified-firebase-common-20.0.0\AndroidManifest.xml:30:13-37
+147            android:initOrder="100" />
+147-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\559156e16cdf0b5fbcae4c6d41b73b58\jetified-firebase-common-20.0.0\AndroidManifest.xml:31:13-36
+148
+149        <meta-data
+149-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\a26e863b2176c6d6af586c55ac3a86c9\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+150            android:name="com.google.android.gms.version"
+150-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\a26e863b2176c6d6af586c55ac3a86c9\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+151            android:value="@integer/google_play_services_version" />
+151-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\a26e863b2176c6d6af586c55ac3a86c9\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+152
+153        <provider
+153-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\fa3ddab82e1548131fc5032af82e96be\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+154            android:name="androidx.startup.InitializationProvider"
+154-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\fa3ddab82e1548131fc5032af82e96be\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+155            android:authorities="romanow.abc.android.androidx-startup"
+155-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\fa3ddab82e1548131fc5032af82e96be\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+156            android:exported="false" >
+156-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\fa3ddab82e1548131fc5032af82e96be\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+157            <meta-data
+157-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\fa3ddab82e1548131fc5032af82e96be\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+158                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+158-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\fa3ddab82e1548131fc5032af82e96be\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+159                android:value="androidx.startup" />
+159-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\fa3ddab82e1548131fc5032af82e96be\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+160            <meta-data
+160-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\10a5273987c77e900e60485711643f29\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+161                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+161-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\10a5273987c77e900e60485711643f29\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+162                android:value="androidx.startup" />
+162-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Ivan\.gradle\caches\transforms-2\files-2.1\10a5273987c77e900e60485711643f29\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+163        </provider>
+164    </application>
+165
+166</manifest>

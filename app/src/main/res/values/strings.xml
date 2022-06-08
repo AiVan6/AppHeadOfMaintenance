@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Опоры России</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_shortOutSide">Основная частота (файл)</string>
+    <string name="action_fullOutSide">Подробно (файл)</string>
+    <string name="action_addToArchive">Файл в архив</string>
+    <string name="action_clear">Очистить ленту</string>
+    <string name="action_dir">Архив</string>
+    <string name="action_delete">Удалить из архива</string>
+
+
+    <string name="selected_month">selectedMonth 2022</string>
+
+    <string name="button_back"><![CDATA[<-]]></string>
+    <string name="button_next"><![CDATA[->]]></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
