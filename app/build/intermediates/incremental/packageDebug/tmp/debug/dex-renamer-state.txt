@@ -1,9 +1,9 @@
-#Wed Jun 08 23:56:47 NOVT 2022
-base.2=C\:\\gitProga\\my\\AppHeadOfMaintenance1\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
+#Thu Jun 09 12:48:23 NOVT 2022
+base.2=C\:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
 path.2=classes2.dex
-base.1=C\:\\gitProga\\my\\AppHeadOfMaintenance1\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+base.1=C\:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
 path.1=classes.dex
-base.0=C\:\\gitProga\\my\\AppHeadOfMaintenance1\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+base.0=C\:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
