@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -34,7 +34,7 @@ public class MaintenanceVoiceFragment extends Fragment {
 
     private FillingList fillingList;
     private MainActivity base;
-    private GridLayout mainLayout;
+    private LinearLayout mainLayout;
     private ArrayList<Object> arrayView = new ArrayList<>();
     private Spinner maintenanceSpinner;
     private Spinner durationSpinner;
@@ -62,7 +62,7 @@ public class MaintenanceVoiceFragment extends Fragment {
         ctx = AppData.ctx();
         settings = ctx.loginSettings();
 
-        mainLayout = (GridLayout) getActivity().findViewById(R.id.voiceMaintenanceLayout);
+        mainLayout = (LinearLayout) getActivity().findViewById(R.id.voiceMaintenanceLayout);
 
         initializationObj();
         fillingView();
@@ -74,10 +74,11 @@ public class MaintenanceVoiceFragment extends Fragment {
         workingFiles = new WorkingFiles(getActivity());
 
         ArrayList<String> infoTextView = new ArrayList<>(Arrays.asList("Заявки","Создана","Получена","Ожидание",
-                "Телефон","Объект","Техник","Смена","Продолжительность"));
+                "Телефон","Объект","Техник","Смена","Голосовое сообщение"));
 
         TextView textView;
-        Spinner spinner;
+        //Spinner spinner;
+        LinearLayout layout;
         EditText editText;
 
 
@@ -85,12 +86,10 @@ public class MaintenanceVoiceFragment extends Fragment {
         for (int i = 0; i < infoTextView.size();i++){
             textView = fillingList.textViewCreate(mainLayout,infoTextView.get(i));
             if(i == infoTextView.size()-1){
-                spinner = fillingList.spinnerCreate(mainLayout);
-                arrayView.add(spinner);
-            }else {
-                editText = fillingList.editTextCreate(mainLayout);
-                arrayView.add(editText);
+                break;
             }
+            editText = fillingList.editTextCreate(mainLayout);
+            arrayView.add(editText);
         }
 
         voiceStart = fillingList.imageButtonCreate(mainLayout);

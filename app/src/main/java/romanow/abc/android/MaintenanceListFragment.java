@@ -9,13 +9,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,8 +35,8 @@ public class MaintenanceListFragment extends Fragment {
 
     private FillingList fillingList;
     private MainActivity base;
-    private GridLayout infoLayout;
-    private GridLayout workLayout;
+    private LinearLayout infoLayout;
+    private LinearLayout workLayout;
 
     private AppData ctx;
     private LoginSettings settings;
@@ -49,6 +46,8 @@ public class MaintenanceListFragment extends Fragment {
     private ArrayList<Object> workArrayObj;
     private Button back;
     private Maintenance maintenance;
+    private MaintenanceFragment maintenanceFragment;
+
     private MaintenanceJob jobs;
     private MaintenanceJob job = new MaintenanceJob();
     private Artifact beginPhoto;
@@ -60,8 +59,8 @@ public class MaintenanceListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         base = (MainActivity) this.getActivity();
-        infoLayout = (GridLayout) view.findViewById(R.id.infoMaintenanceLayout);
-        workLayout = (GridLayout) view.findViewById(R.id.workMaintenanceLayout);
+        infoLayout = (LinearLayout) view.findViewById(R.id.infoMaintenanceLayout);
+        workLayout = (LinearLayout) view.findViewById(R.id.workMaintenanceLayout);
 
         ctx = AppData.ctx();
         settings = ctx.loginSettings();
@@ -83,13 +82,14 @@ public class MaintenanceListFragment extends Fragment {
         fillingList = new FillingList(base);
         workingFiles = new WorkingFiles(getActivity());
         job = new MaintenanceJob();
+        maintenanceFragment = new MaintenanceFragment();
 
         ArrayList<String> infoTextView = new ArrayList<>(Arrays.asList("Тип","Состояние","Объект","Техник",
                 "Акт Приемки работ","Дата регламента","Дата создания","Дата выполнения","Время начала",
-                "Продолжительность","Начало(Факт)","Окончание(Факт)","Сумма оплаты","Оплата","Дата списания","КИ"));
+                "Продолжительность","Начало(Факт)","Окончание(Факт)","Сумма оплаты","Оплата","Дата списания"));
 
-        ArrayList<String> workTextView = new ArrayList<>(Arrays.asList("Работы","","Состояние","Продолж. по плану",
-                "Начало по факту","Окончание по факту","Проблема","Артефакт","Инвентарь","Фото до","Фото после"));
+        ArrayList<String> workTextView = new ArrayList<>(Arrays.asList("Работы","Наименование","Состояние","Продолж. по плану",
+                "Начало по факту","Окончание по факту","Проблема","Инвентарь","Фото до","Фото после"));
 
         infoArrayText = new ArrayList<>();
         infoArrayObj = new ArrayList<>();
@@ -97,30 +97,44 @@ public class MaintenanceListFragment extends Fragment {
         workArrayObj = new ArrayList<>();
         TextView textView;
         EditText editText;
-        Spinner spinner;
+        //Spinner spinner;
         ImageView imageView;
+        LinearLayout layout;
 
         back = fillingList.buttonCreate(infoLayout,"Назад",true);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                base.fragmentTransaction = base.getSupportFragmentManager().beginTransaction();
+                base.fragmentTransaction.replace(R.id.mainLayoutActivity,maintenanceFragment);
+                base.fragmentTransaction.addToBackStack(null);
+                base.fragmentTransaction.commit();
+            }
+        });
 
-        for(int i = 0; i < 16;i++){
+        for(int i = 0; i < 15;i++){
             textView = fillingList.textViewCreate(infoLayout,infoTextView.get(i));
             infoArrayText.add(textView);
             if(i<15) {
                 editText = fillingList.editTextCreate(infoLayout);
                 infoArrayObj.add(editText);
             }else {
-                spinner = fillingList.spinnerCreate(infoLayout);
-                infoArrayObj.add(spinner);
+                layout = fillingList.createListBox("V");
+                infoArrayObj.add(layout);
+                infoLayout.addView(layout);
+                //spinner = fillingList.spinnerCreate(infoLayout);
+                //infoArrayObj.add(spinner);
             }
         }
 
-        for(int i = 0; i < 11;i++){
+        for(int i = 0; i < 10;i++){
                 textView = fillingList.textViewCreate(workLayout, workTextView.get(i));
             workArrayText.add(textView);
-            if(i==0 || i== 7 || i==8) {
-                spinner = fillingList.spinnerCreate(workLayout);
-                workArrayObj.add(spinner);
-            }else if(i==9 || i==10){
+            if(i==0 || i== 7) {
+                layout = fillingList.createListBox("V");
+                workArrayObj.add(layout);
+                workLayout.addView(layout);
+            }else if(i==8 || i == 9){
                 imageView = fillingList.imageCreate(workLayout);
                 workArrayObj.add(imageView);
             }else {
@@ -139,11 +153,11 @@ public class MaintenanceListFragment extends Fragment {
         setEditView(4,infoArrayObj, WCRStates[maintenance.getWorkCompletionReportState()]);//-'
         setEditView(5,infoArrayObj, maintenance.getReglamentMonth()+"-"+ maintenance.getReglamentYear());//-
         setEditView(6,infoArrayObj, maintenance.getCreateDate().dateToString());
-        setEditView(7,infoArrayObj, maintenance.getVisitDate().dateToString());//+
-        setEditView(8,infoArrayObj, maintenance.getVisitDate().timeToString());//-
+        setEditView(7,infoArrayObj, maintenance.getVisitDate().dateToString());
+        setEditView(8,infoArrayObj, maintenance.getVisitDate().timeToString());
         setEditView(9,infoArrayObj, String.valueOf(maintenance.getDuration()));
-        setEditView(10,infoArrayObj, maintenance.getBeginTime().timeToString());//-
-        setEditView(11,infoArrayObj, maintenance.getEndTime().timeToString());//-
+        setEditView(10,infoArrayObj, maintenance.getBeginTime().timeToString());
+        setEditView(11,infoArrayObj, maintenance.getEndTime().timeToString());
         setEditView(12,infoArrayObj, maintenance.getCurrentPay().toString());
         setEditView(13,infoArrayObj, PIStates[maintenance.getPaymentState()]);
         setEditView(14,infoArrayObj, "");//дата списания
@@ -155,15 +169,23 @@ public class MaintenanceListFragment extends Fragment {
 
 
         jobs = maintenance.getJobList().get(0).getRef();
-        setSpinner(maintenanceJobsTitle,(Spinner) workArrayObj.get(0));//jabList
-        ((Spinner) workArrayObj.get(0)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        TextView selector =(TextView)((LinearLayout)workArrayObj.get(0)).getChildAt(0);
+        TextView info =(TextView)((LinearLayout)workArrayObj.get(0)).getChildAt(1);
+
+        fillingList.fillingListBox(info, selector, maintenanceJobsTitle, 0, new I_ListBoxListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                jobs = maintenance.getJobList().get(i).getRef();
+            public void onSelect(int index) {
+                jobs = maintenance.getJobList().get(index).getRef();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onLongSelect(int index) {
+
+            }
+
+            @Override
+            public void onCancel() {
 
             }
         });
@@ -173,17 +195,23 @@ public class MaintenanceListFragment extends Fragment {
         setEditView(4,workArrayObj,jobs.getBeginTime().timeToString());
         setEditView(5,workArrayObj,jobs.getEndTime().timeToString());
         setEditView(6,workArrayObj,jobs.getProblem()+"");
-        setSpinner(jobs.getImplList(),(Spinner) workArrayObj.get(8));
+        //setSpinner(jobs.getImplList(),(Spinner) workArrayObj.get(8));
+        ArrayList<String> strImpl = new ArrayList<>();
+        for(int i = 0; i < jobs.getImplList().size();i++){
+            strImpl.add(job.getImplList().get(i).getRef().getTitle());
+        }
+
+        setListBox(strImpl,(LinearLayout) workArrayObj.get(7));
 
         beginPhoto = jobs.getBeginPhoto().getRef();
         endPhoto = jobs.getEndPhoto().getRef();
-        setImageArtifact(beginPhoto,((ImageView) workArrayObj.get(9)));
-        setImageArtifact(endPhoto,((ImageView) workArrayObj.get(10)));
+        setImageArtifact(beginPhoto,((ImageView) workArrayObj.get(8)),"temp.jpg");
+        setImageArtifact(endPhoto,((ImageView) workArrayObj.get(9)),"temp.jpg");
 
     }
 
-    public void setImageArtifact(Artifact art,ImageView view){
-        workingFiles.startLoadByUrl(art,"temp.jpg", new I_SelectObject(){
+    public void setImageArtifact(Artifact art,ImageView view,String file){
+        workingFiles.startLoadByUrl(art,file, new I_SelectObject(){
             @Override
             public void onSelect(Object ent) {
                 String fname = (String)ent;
@@ -206,11 +234,28 @@ public class MaintenanceListFragment extends Fragment {
         type.setEnabled(false);
     }
 
-    public void setSpinner(ArrayList<?> objData, Spinner spinner) {
-        ArrayAdapter<?> adapterObj = new ArrayAdapter<>(base.getApplicationContext(), R.layout.item_spinner_text_view,
-                R.id.textViewSpinner,objData);
-        adapterObj.setDropDownViewResource(R.layout.item_spinner_text_view);
-        spinner.setAdapter(adapterObj);
+
+    public void setListBox(ArrayList<String>arr,LinearLayout layout){
+        TextView selector =(TextView)layout.getChildAt(0);
+        TextView info =(TextView)layout.getChildAt(1);
+
+        fillingList.fillingListBox(info, selector, arr, 0, new I_ListBoxListener() {
+            @Override
+            public void onSelect(int index) {
+
+            }
+
+            @Override
+            public void onLongSelect(int index) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+        });
+
     }
 
     @Override

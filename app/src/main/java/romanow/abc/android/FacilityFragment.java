@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import firefighter.core.constants.Values;
 import firefighter.core.entity.EntityLink;
@@ -28,7 +25,6 @@ import firefighter.core.entity.subjectarea.Contract;
 import firefighter.core.entity.subjectarea.Equipment;
 import firefighter.core.entity.subjectarea.Facility;
 import firefighter.core.entity.subjectarea.FacilityOrder;
-import firefighter.core.entity.subjectarea.Implements;
 import firefighter.core.entity.subjectarea.TechnicianAssign;
 import firefighter.core.entity.subjectarea.arrays.FacilityList;
 import romanow.abc.android.service.AppData;
@@ -77,13 +73,20 @@ public class FacilityFragment extends Fragment {
     private MainActivity base;
     private AppData ctx;
     private LoginSettings settings;
-    private GridLayout mainLayout;
+    private LinearLayout mainLayout;
     private FacilityList facilityLists;
     private Button selectButton;
     private FragmentTransaction fragmentTransaction;
     private MaintenanceFragment maintenanceFragment;
     private String selectFacility;
     private String facilityTech;
+
+    private LinearLayout titleListBox;
+    private LinearLayout technicianTitleListBox;
+    private LinearLayout regulationsListBox;
+    private LinearLayout contractListBox;
+    private LinearLayout equipmentsListBox;
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -107,27 +110,29 @@ public class FacilityFragment extends Fragment {
         maintenanceFragment = new MaintenanceFragment();
 
         titleText = fillingList.textViewCreate(mainLayout,"Объект");
-        titleSpinner = fillingList.spinnerCreate(mainLayout);
+        titleListBox = fillingList.createListBox("V");
+        mainLayout.addView(titleListBox);
         nameText = fillingList.textViewCreate(mainLayout,"Наименование");
         nameEdit = fillingList.editTextCreate(mainLayout);
         idText= fillingList.textViewCreate(mainLayout,"Идентификатор");
         identifierEdit = fillingList.editTextCreate(mainLayout);
         serviceDateText= fillingList.textViewCreate(mainLayout,"Начало обслуживания");
         serviceDateEdit = fillingList.editTextCreate(mainLayout);
-        addressText= fillingList.textViewCreate(mainLayout,"Адресс");
+        addressText= fillingList.textViewCreate(mainLayout,"Адрес");
         addressEdit = fillingList.editTextCreate(mainLayout);
         counterpartyText= fillingList.textViewCreate(mainLayout,"Контрагент");
         counterpartyEdit = fillingList.editTextCreate(mainLayout);
         technicianText= fillingList.textViewCreate(mainLayout,"Техник");
-        technicianTitleSpin = fillingList.spinnerCreate(mainLayout);
+        technicianTitleListBox = fillingList.createListBox("V");
+        mainLayout.addView(technicianTitleListBox);
         gpsText= fillingList.textViewCreate(mainLayout,"GPS");
         gpsEdit = fillingList.editTextCreate(mainLayout);
         regulationsText= fillingList.textViewCreate(mainLayout,"Регламенты");
-        regulationsSpinner = fillingList.spinnerCreate(mainLayout);
-        inventoryText= fillingList.textViewCreate(mainLayout,"Инвентарь");
-        inventorySpinner = fillingList.spinnerCreate(mainLayout);
+        regulationsListBox = fillingList.createListBox("V");
+        mainLayout.addView(regulationsListBox);
         contractText= fillingList.textViewCreate(mainLayout,"Договор");
-        contractSpinner = fillingList.spinnerCreate(mainLayout);
+        contractListBox = fillingList.createListBox("V");
+        mainLayout.addView(contractListBox);
 
 
         securityText = fillingList.textViewCreate(mainLayout,"Пост охраны");
@@ -137,7 +142,9 @@ public class FacilityFragment extends Fragment {
         telephoneText = fillingList.textViewCreate(mainLayout,"Доп. телефон");
         telephoneEdit = fillingList.editTextCreate(mainLayout);
         equipmentsText = fillingList.textViewCreate(mainLayout,"Оборудование");
-        equipmentsSpinner = fillingList.spinnerCreate(mainLayout);
+        equipmentsListBox = fillingList.createListBox("V");
+        mainLayout.addView(equipmentsListBox);
+        //equipmentsSpinner = fillingList.spinnerCreate(mainLayout);
         selectButton = fillingList.buttonCreate(mainLayout,"Заявки",false);
     }
 
@@ -155,83 +162,44 @@ public class FacilityFragment extends Fragment {
 
     }
 
+    ArrayList<String> facilityListsStr = new ArrayList<>();
+    boolean flag = true;
+
     public void fillingFields (){
-        List<String> facilityListsStr = new ArrayList<>();
+
         ArrayList<Facility> facilities = new ArrayList<>();
 
         for (Facility facility : this.facilityLists){
             facilityListsStr.add(facility.getTitle());
-            System.out.println(facility.getTitle());
+            //System.out.println(facility.getTitle());
             facilities.add(facility);
         }
 
-        ArrayAdapter<String> adapterObj = new ArrayAdapter<>(base.getApplicationContext(), R.layout.item_spinner_text_view,
-                R.id.textViewSpinner,facilityListsStr);
-        adapterObj.setDropDownViewResource(R.layout.item_spinner_text_view);
-        titleSpinner.setAdapter(adapterObj);
-        titleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        TextView titleSelector =(TextView)titleListBox.getChildAt(0);
+        TextView titleInfo =(TextView)titleListBox.getChildAt(1);
+        System.out.println("selector"+titleSelector);
+        System.out.println("info"+titleInfo);
+
+        fillingList.fillingListBox(titleInfo, titleSelector, facilityListsStr, 0, new I_ListBoxListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                selectFacility = (String) adapterView.getItemAtPosition(i);
-
-                List<String> technicianList = new ArrayList<>();
-                List<String> regulationsList = new ArrayList<>();
-                List<String> inventoryList = new ArrayList<>();
-                List<String> contractList = new ArrayList<>();
-                List<String> equipmentsList = new ArrayList<>();
-
-                new NetCall<EntityList<TechnicianAssign>>().call(base, ctx.getService().getTechnicianAssignFacilityList(settings.getSessionToken(),
-                        facilityLists.get(i).getOid()), new NetBackDefault() {
-                    @Override
-                    public void onSuccess(Object val) {
-                        for(TechnicianAssign technician : (EntityList<TechnicianAssign>) val){
-                               technicianList.add(technician.getFacilityTitle());
-                               facilityTech = technician.getTechnician().getTitle();
-                        }
-
-                        fillingSpinner(technicianList,technicianTitleSpin);
-                    }
-                });
-
-                for(EntityLink<FacilityOrder> entityLink : (EntityLinkList<FacilityOrder>) facilityLists.get(i).getOrder()){
-                    regulationsList.add(entityLink.getTitle());
-                }
-                fillingSpinner(regulationsList,regulationsSpinner);
-                for (EntityLink<Implements> entityLinks : (EntityLinkList<Implements>)facilityLists.get(i).getImpl()) {
-                    inventoryList.add(entityLinks.getTitle());
-                }
-                fillingSpinner(inventoryList,inventorySpinner);
-                for(EntityLink<Contract> entityLink : (EntityLinkList<Contract>)facilityLists.get(i).getContract()) {
-                    contractList.add(entityLink.getTitle());
-
-                }
-                fillingSpinner(contractList,contractSpinner);
-
-                ArrayList<String> str = new ArrayList<>();
-                for(EntityLink<Equipment> entityLink : (EntityLinkList<Equipment>) facilityLists.get(i).getEquipments()){
-                    equipmentsList.add(entityLink.getRef().getType().getRef().getName());
-                }
-
-                fillingSpinner(equipmentsList,equipmentsSpinner);
-
-
-                nameEdit.setText(facilityLists.get(i).getName());
-                identifierEdit.setText(facilityLists.get(i).getIdentifier());
-                serviceDateEdit.setText(facilityLists.get(i).getAssingmentDate().monthToString());
-                serviceDateEdit.setEnabled(false);
-                addressEdit.setText(facilityLists.get(i).getAddress().toShortString());
-                addressEdit.setEnabled(false);
-                counterpartyEdit.setText(facilityLists.get(i).getContractor().getTitle());
-                counterpartyEdit.setEnabled(false);
-                gpsEdit.setText(facilityLists.get(i).getGPS().getTitle());
-                securityEdit.setText(String.valueOf(facilityLists.get(i).getSecurityPost()));//?
-                contactPersonEdit.setText(facilityLists.get(i).getContactPerson().getTitle());
-                telephoneEdit.setText(String.valueOf(facilityLists.get(i).getAdditionalPhones()));
+            public void onSelect(int index) {
+                fillingViews(index);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onLongSelect(int index) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
         });
+
+        if(flag){
+            fillingViews(0);
+        }
 
         selectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -250,11 +218,86 @@ public class FacilityFragment extends Fragment {
         });
     }
 
-    public void fillingSpinner(List<String> objData,Spinner spinner) {
-        ArrayAdapter<String> adapterObj = new ArrayAdapter<>(base.getApplicationContext(), R.layout.item_spinner_text_view,
-                R.id.textViewSpinner,objData);
-        adapterObj.setDropDownViewResource(R.layout.item_spinner_text_view);
-        spinner.setAdapter(adapterObj);
+
+    public void fillingViews(int index) {
+        if(facilityLists.size() !=0)
+            selectFacility = facilityListsStr.get(index);
+
+        ArrayList<String> technicianList = new ArrayList<>();
+        ArrayList<String> regulationsList = new ArrayList<>();
+        ArrayList<String> contractList = new ArrayList<>();
+        ArrayList<String> equipmentsList = new ArrayList<>();
+        //base.showDialogDownloadPage();
+        new NetCall<EntityList<TechnicianAssign>>().call(base, ctx.getService().getTechnicianAssignFacilityList(settings.getSessionToken(),
+                facilityLists.get(index).getOid()), new NetBackDefault() {
+            @Override
+            public void onSuccess(Object val) {
+                for(TechnicianAssign technician : (EntityList<TechnicianAssign>) val){
+                    technicianList.add(technician.getFacilityTitle());
+                    facilityTech = technician.getTechnician().getTitle();
+                }
+
+                fillingSpinner(technicianList,technicianTitleListBox);
+               // base.cancelDialogDownloadPage();
+            }
+        });
+
+        for(EntityLink<FacilityOrder> entityLink : (EntityLinkList<FacilityOrder>) facilityLists.get(index).getOrder()){
+            regulationsList.add(entityLink.getTitle());
+        }
+        fillingSpinner(regulationsList,regulationsListBox);
+
+        for(EntityLink<Contract> entityLink : (EntityLinkList<Contract>)facilityLists.get(index).getContract()) {
+            contractList.add(entityLink.getTitle());
+
+        }
+        fillingSpinner(contractList,contractListBox);
+
+        ArrayList<String> str = new ArrayList<>();
+        for(EntityLink<Equipment> entityLink : (EntityLinkList<Equipment>) facilityLists.get(index).getEquipments()){
+            equipmentsList.add(entityLink.getRef().getType().getRef().getName());
+        }
+
+        fillingSpinner(equipmentsList,equipmentsListBox);
+
+
+        nameEdit.setText(facilityLists.get(index).getName());
+        identifierEdit.setText(facilityLists.get(index).getIdentifier());
+        serviceDateEdit.setText(facilityLists.get(index).getAssingmentDate().monthToString());
+        serviceDateEdit.setEnabled(false);
+        addressEdit.setText(facilityLists.get(index).getAddress().toShortString());
+        addressEdit.setEnabled(false);
+        counterpartyEdit.setText(facilityLists.get(index).getContractor().getTitle());
+        counterpartyEdit.setEnabled(false);
+        gpsEdit.setText(facilityLists.get(index).getGPS().getTitle());
+        securityEdit.setText(String.valueOf(facilityLists.get(index).getSecurityPost()));//?
+        contactPersonEdit.setText(facilityLists.get(index).getContactPerson().getTitle());
+        telephoneEdit.setText(String.valueOf(facilityLists.get(index).getAdditionalPhones()));
+    }
+
+
+    public void fillingSpinner(ArrayList<String> objData,LinearLayout layout) {
+        TextView selector =(TextView)layout.getChildAt(0);
+        TextView info =(TextView)layout.getChildAt(1);
+        System.out.println("selector"+selector);
+        System.out.println("info"+info);
+
+        fillingList.fillingListBox(info, selector, objData, 0, new I_ListBoxListener() {
+            @Override
+            public void onSelect(int index) {
+
+            }
+
+            @Override
+            public void onLongSelect(int index) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+        });
     }
 
     @Override

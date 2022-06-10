@@ -248,8 +248,7 @@ public class MainActivity extends BaseActivity {     //!!!!!!!!!!!!!!!!!!!!!!!!!
         ctx = AppData.ctx();
         try {
             Values.init();                  // Статические данные
-//            AlarmManager am = (AlarmManager) ctx.getContext().getSystemService(Context.ALARM_SERVICE);
-//            am.setTimeZone("Russian/Novosibirsk");
+
             ctx.setContext(getApplicationContext());
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             setContentView(R.layout.activity_main);
@@ -258,7 +257,6 @@ public class MainActivity extends BaseActivity {     //!!!!!!!!!!!!!!!!!!!!!!!!!
 
             MenuButton = (ImageView) findViewById(R.id.headerMenu);
             GPSState = (ImageView) findViewById(R.id.headerGPS);
-            //calendarLayout = (LinearLayout) findViewById(R.id.calendarLayout);
             log = (LinearLayout) findViewById(R.id.log);
             scroll = (ScrollView) findViewById(R.id.scroll);
             NETState = (ImageView) findViewById(R.id.headerNet);
@@ -276,11 +274,6 @@ public class MainActivity extends BaseActivity {     //!!!!!!!!!!!!!!!!!!!!!!!!!
             if (testPermission()){
                 onAllPermissionsEnabled();
                 }
-//            Bundle bundle = getIntent().getExtras();
-//            if(bundle != null) {
-//                String name = bundle.getString("title");
-//                System.out.println("namenamenamenamename:" + name);
-//            }
 
             } catch (Exception ee) {
                 errorMes(createFatalMessage(ee, 10));
@@ -309,8 +302,6 @@ public class MainActivity extends BaseActivity {     //!!!!!!!!!!!!!!!!!!!!!!!!!
                 }
             });
 
-
-            ///?????????????
             GPSState.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -348,45 +339,21 @@ public class MainActivity extends BaseActivity {     //!!!!!!!!!!!!!!!!!!!!!!!!!
                     menuDialog.create();
                 }
             });
-//            calendarButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    addCalendar();
-//                }
-//            });
 
             //------------------------------------------------
-            //int[] surrogates = {0xD83D, 0xDC7D};
-            //String title = "Звенящие опоры России "+
-            //        new String(Character.toChars(0x1F349))+
-            //        new String(surrogates, 0, surrogates.length)+
-            //        "\uD83D\uDC7D";
+
             String fatalMessage = ctx.loginSettings().getFatalMessage();
             if (fatalMessage.length()!=0){
                 addToLog(false,fatalMessage,14,0x00A00000);
                 ctx.loginSettings().setFatalMessage("");
                 saveContext();
                 }
-            String title = "Журнал при входе в приложения";
+            String title = "Журнал приложения";
             addToLog(false, title, 22, 0);
-            //addToLogButton("Рег.код: "+createRegistrationCode(),true,null,null);
-            //addToLogButton("ID: "+getSoftwareId64(),true,null,null);
-            //if (!createRegistrationCode().equals(ctx.loginSettings().getRegistrationCode())) {
-            //    addToLog(false,"Приложение не зарегистрировано\nПолучить регистрационный код для",
-            //            18,0x00A00000);
-            //    addToLogButton("ID: " + getSoftwareId64(),true,null,null);
-            //    }
-            //else{
-            //    addToLog(false,"Приложение зарегистрировано\nПолная функциональность",
-            //            18,0);
-            //    }
             } catch (Exception ee) {
                 errorMes(createFatalMessage(ee, 10));
                 }
-            //addToLogImage(R.drawable.status_green);
-            //---------- проверка перехвата исключений по умолчанию
-            //Object oo=null;
-            //oo.toString();
+
         }
 
 
@@ -520,127 +487,6 @@ public class MainActivity extends BaseActivity {     //!!!!!!!!!!!!!!!!!!!!!!!!!
         fragmentTransaction.commit();
     }
 
-//    //private CalendarMain calendarMain;
-//    @RequiresApi(api = Build.VERSION_CODES.O)
-//    public void addCalendar() {
-//        guiCall(new Runnable() {
-//            @Override
-//            public void run() {
-//                //LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.calendar,null);
-//
-//                //CalendarView calendarView = new CalendarView(MainActivity.this);
-//                //layout.addView(calendarView);
-//                ///////?????
-//
-//
-////                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) calendarLayout.getLayoutParams();
-////                params.height = LinearLayout.LayoutParams.MATCH_PARENT;
-////                layout.setLayoutParams(params);
-////                //System.out.println(":::::::::::::::::::::::::::::::::::"+layout);
-////                calendarMain = new CalendarMain(layout,getApplicationContext());
-////                calendarMain.setMonthView();
-////                //log.setEnabled(false);
-////                calendarLayout.addView(layout);
-//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.mainLayoutActivity,fragmentCalendar);
-//                //fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-////        new NetCall<MaintenanceList>().call(MainActivity.this,
-////                ctx.getService().getMaintenanceConditionList(settings.getSessionToken(),-1,-1,-1,-1,0,0,0,(long)0,(long)2000000000,2),
-////                new NetBackDefault() {
-////                    @Override
-////                    public void onSuccess(Object val) {
-////
-////                        System.out.println("Операция выполнена успешно:"+val);
-////
-////                        for (Maintenance technicianAssign : (MaintenanceList) val) {
-//////                            String techDay = String.valueOf(technicianAssign.getAssingmentDate().day());
-//////                            String techMonth = String.valueOf(technicianAssign.getAssingmentDate().month());
-//////                            String techYear = String.valueOf(technicianAssign.getAssingmentDate().year());
-////
-////                            //if (day.equals(techDay) && month.equals(techMonth) && year.equals(techYear)) {
-////                            //System.out.println(technicianAssign.getFacility());
-////                            System.out.println(technicianAssign);
-//////                                System.out.print(technicianAssign.getAssingmentDate().day());
-//////                                System.out.print("-" + technicianAssign.getAssingmentDate().month());
-//////                                System.out.println("-" + technicianAssign.getAssingmentDate().year());
-////                            // }
-////                        }
-////
-////                    }
-////                });
-//
-//
-//       // System.out.println(settings.getSessionToken());
-//       // System.out.println(settings.isTechnicianMode());
-//
-////        LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.calendar,null);
-////        TextView txt = new TextView(MainActivity.this);
-////        txt.setText("kfmdkfmd");//getTechnicianList(settings.getSessionToken(),0,0)  ctx.getService()
-////        layout.addView(txt);
-////        calendarLayout.addView(layout);
-//
-//        //System.out.println("pirivet123"+ctx.getService().getTechnicianList(settings.getSessionToken(),0,0));
-//
-//        /*new NetCall<EntityList<Technician>>().call(MainActivity.this,
-//                ctx.getService().getTechnicianList(settings.getSessionToken(),ValuesBase.GetAllModeActual,2),
-//                new NetBackDefault() {
-//            @Override
-//            public void onSuccess(Object val) {
-//                System.out.println("Операция выполнена успешно");
-//
-//                for(Technician technician : (EntityList<Technician>)val) {
-//                    System.out.println(technician.getUserRef());
-//                }
-//            }
-//        });*/
-//
-////        new NetCall<WorkSettings>().call(MainActivity.this,ctx.getService().workSettings(ctx.loginSettings().getSessionToken()), new NetBackDefault() {
-////            @Override
-////            public void onSuccess(Object val) {
-////                ctx.workSettings((WorkSettings)(val));
-////                ctx.setRegisteredOnServer(true);
-////            }
-////        });
-//
-//
-//        //RestAPIFace.getTechnicianList
-//    }
-
-//    @RequiresApi(api = Build.VERSION_CODES.O)
-//    public void previousMonthAction(View view)
-//    {
-//        calendarMain.selectedDate = calendarMain.selectedDate.minusMonths(1);
-//        calendarMain.setMonthView();
-//    }
-//
-//    @RequiresApi(api = Build.VERSION_CODES.O)
-//    public void nextMonthAction(View view)
-//    {
-//        calendarMain.selectedDate = calendarMain.selectedDate.plusMonths(1);
-//        calendarMain.setMonthView();
-//    }
-
-//    @RequiresApi(api = Build.VERSION_CODES.O)
-//    public void setMonthView(CalendarMain calendarMain) {
-//        calendarMain.monthYearText.setText(calendarMain.monthYearFromDate(calendarMain.selectedDate));
-//        ArrayList<String> daysInMonth = new ArrayList<>();//= daysInMonthArray(selectedDate);
-//
-//        for (int i = 0; i < 5; i++) {
-//            daysInMonth.add("1");
-//        }
-//
-//        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
-//
-//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
-//        System.out.println("THISSSSSSSSSSSSSSSSSSSSSSSSSSSSS:::"+getApplicationContext());
-//        calendarMain.calendarRecyclerView.setLayoutManager(layoutManager);
-//        calendarMain.calendarRecyclerView.setAdapter(calendarAdapter);
-//    }
-
     @SuppressLint("Range")
     public String getFileName(Uri uri) {
         String result = null;
@@ -667,19 +513,7 @@ public class MainActivity extends BaseActivity {     //!!!!!!!!!!!!!!!!!!!!!!!!!
     public Pair<InputStream, FileDescription> openSelected(Intent data) throws FileNotFoundException {
         Uri uri = data.getData();
         String ss = getFileName(uri);
-        /*
-        String ss = uri.getEncodedPath();
-        try {
-            ss = URLDecoder.decode( ss, "UTF-8" );
-            } catch (UnsupportedEncodingException e) {
-                addToLog("Системная ошибка в имени файла:"+e.toString());
-                addToLog(ss);
-                return new Pair<>(null,null);
-                }
-        String ss0 = ss;
-        int idx= ss.lastIndexOf("/");
-        if (idx!=-1) ss = ss.substring(idx+1);
-         */
+
         FileDescription description = new FileDescription(ss);
         String out = description.getFormatError();
         if (out.length() != 0) {
@@ -823,6 +657,7 @@ public class MainActivity extends BaseActivity {     //!!!!!!!!!!!!!!!!!!!!!!!!!
                 fragmentTransaction.replace(R.id.mainLayoutActivity,technicianFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+
             }
         });
 
@@ -920,8 +755,6 @@ public class MainActivity extends BaseActivity {     //!!!!!!!!!!!!!!!!!!!!!!!!!
 //            if (ctx.loginSettings().isFullInfo())
 //                new MITestCase(this);
 //            }
-
-
         menuList.add(new MenuItemAction("Выход") {
             @Override
             public void onSelect() {

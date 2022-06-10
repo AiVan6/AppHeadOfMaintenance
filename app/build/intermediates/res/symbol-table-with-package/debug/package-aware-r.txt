@@ -2008,7 +2008,6 @@ id SYM
 id SpinnerPanel
 id TOP_END
 id TOP_START
-id TextViewPanel
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -2276,6 +2275,8 @@ id jumpToStart
 id labeled
 id layout
 id left
+id leftButton
+id leftImage
 id leftToRight
 id legacy
 id light
@@ -2405,6 +2406,7 @@ id rectangles
 id recycle_list_obj
 id reverseSawtooth
 id right
+id rightButton
 id rightToLeft
 id right_icon
 id right_side
@@ -2502,6 +2504,8 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textViewName
+id textViewPanel
 id textViewSpinner
 id text_input_end_icon
 id text_input_error_icon
@@ -2663,11 +2667,13 @@ layout fragment_technician
 layout graph_gorizontal
 layout graphview
 layout graphviewhoriz
+layout image_button
 layout image_view
 layout image_view_photo
 layout item_edit_text
 layout item_spiner_text
 layout item_spinner_text_view
+layout item_text_view
 layout listbox
 layout listbox_item
 layout log
@@ -2756,11 +2762,13 @@ layout test_toolbar
 layout test_toolbar_custom_background
 layout test_toolbar_elevation
 layout test_toolbar_surface
+layout text_form_spinner
 layout text_view_with_line_height_from_appearance
 layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+layout tow_button
 menu example_menu
 menu example_menu2
 menu menu_main

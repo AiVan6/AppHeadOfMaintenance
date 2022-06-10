@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:rowCount="1"
-    android:columnCount="4">
-
-    <TextView
-        android:id="@+id/TextViewPanel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="obj"
-        android:layout_column="0"
-        android:textSize="20sp"
-        android:layout_columnWeight="1"
-        android:textColor="@color/Black"/>
-
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
     <EditText
         android:id="@+id/EditTextPanel"
-        android:layout_width="0dp"
-        android:layout_column="1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
         android:textColor="@color/Black"
         android:textSize="20sp" />
-
-</GridLayout>
+</LinearLayout>

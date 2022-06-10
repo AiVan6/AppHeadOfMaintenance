@@ -40,6 +40,8 @@ public class ListBoxDialog {
             list.add(ss);
         ls = ls0;
     }
+
+
     public ListBoxDialog setAutoClose(boolean autoClose) {
         this.autoClose = autoClose;
         return this;
@@ -88,14 +90,14 @@ public class ListBoxDialog {
                 tt.setText(list.get(i));
                 StringTokenizer ss = new StringTokenizer(list.get(i),"\n");
                 int cnt = ss.countTokens();
-                tt.setLines(cnt > nLines ? cnt : nLines);
+                tt.setLines(2);//cnt > nLines ? cnt : nLines
                 if (textSize!=0)
                     tt.setTextSize(textSize);
                 tt.setTextAlignment(textAlignment);
                 tt.setOnClickListener(new OnClickListener(){
                     public void onClick(final View arg0) {
                     	if (ls!=null) ls.onSelect(ii);
-                    	myDlg.cancel();                	
+                    	myDlg.cancel();
                     }});
                 tt.setOnLongClickListener(new OnLongClickListener(){
     				public boolean onLongClick(View arg0) {

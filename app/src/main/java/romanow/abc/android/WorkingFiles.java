@@ -67,11 +67,6 @@ public class WorkingFiles {
 
     public void startLoadByUrl(Artifact art, String temp, I_SelectObject back){
         final String fname = testDataDirectoty()+"/"+temp;
-        //final String fname = "file/3_Audio" +"/"+ art.createArtifactFileName();
-
-        System.out.println("fname1:"+fname);
-        //String fname = artifactVoice.createArtifactFileName();
-
 
         File ff = new File(fname);
         if (ff.exists()){
@@ -84,15 +79,15 @@ public class WorkingFiles {
                 try {
                     System.out.println("continue");
                     URL url2 = new URL("http://"+settings.getDataSetverIP()+":"+settings.getDataServerPort()+"/file/"+art.createArtifactServerPath());
-                    System.out.println("url:"+url2);
+
                     HttpURLConnection connection;
                     connection= (HttpURLConnection) url2.openConnection();
                     connection.setReadTimeout(10000);
                     connection.getResponseCode();
                     InputStream in = connection.getInputStream();
-                    System.out.println("111111111");
+
                     final FileOutputStream out = new FileOutputStream(fname);
-                    System.out.println("2222222222222");
+
                     int sz = Values.FileBufferSize*4;
                     int fileSize=0;
                     int idx=0;
@@ -117,15 +112,8 @@ public class WorkingFiles {
                     in.close();
                     out.flush();
                     out.close();
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    back.onSelect(fname);
-//                }
-//            });
+
                 } catch (Exception ee) {
-//            addBugMessage(Utils.createFatalMessage(ee));
-//            popupToast("Ошибка загрузки файла");
                     System.out.println("Error:"+ee);
                 }
             }

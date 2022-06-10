@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -60,7 +58,7 @@ public class TechnicianFragment extends Fragment {
 
     public FillingList technicianList;
 
-    public GridLayout mainLayout;
+    public LinearLayout mainLayout;
     private AppData ctx;
     private LoginSettings settings;
 
@@ -71,6 +69,9 @@ public class TechnicianFragment extends Fragment {
     private Button selectButton;
     private Button mapButton;
     private String enteredDate;
+    private ListBoxDialog dialog;
+    private LinearLayout technicianListBox;
+    private LinearLayout objListBox;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -78,7 +79,7 @@ public class TechnicianFragment extends Fragment {
         base = (MainActivity) this.getActivity();
         ctx = AppData.ctx();
         settings = ctx.loginSettings();
-        mainLayout = (GridLayout) view.findViewById(R.id.technicianLayout);
+        mainLayout = (LinearLayout) view.findViewById(R.id.technicianLayout);
         initializationObj();
         fillingView();
     }
@@ -90,28 +91,42 @@ public class TechnicianFragment extends Fragment {
         mapFragment =new MapFragment();
         Shift shift = new Shift();
         shift.getGPSList();
+        flag = true;
 
         technicianTitle = technicianList.textViewCreate(mainLayout,"Техник");
-        titleSpinner = technicianList.spinnerCreate(mainLayout);
+        technicianListBox = technicianList.createListBox("V");
+        mainLayout.addView(technicianListBox);
+
         technicianStet = technicianList.textViewCreate(mainLayout,"Состояние");
         statEdit = technicianList.editTextCreate(mainLayout);
         statEdit.setEnabled(false);
 
         technicianPos = technicianList.textViewCreate(mainLayout,"В должности с ");
         posEdit = technicianList.editTextCreate(mainLayout);
+
         technicianExp = technicianList.textViewCreate(mainLayout,"Стаж");
         expEdit = technicianList.editTextCreate(mainLayout);
         technicianObject = technicianList.textViewCreate(mainLayout,"Объект");
-        objSpinner = technicianList.spinnerCreate(mainLayout);
+        objListBox = technicianList.createListBox("V");
+        mainLayout.addView(objListBox);
         technicianOnDate = technicianList.textViewCreate(mainLayout,"Смена (дата)");
         dataEdit = technicianList.editTextCreate(mainLayout);
-        selectButton = technicianList.buttonCreate(mainLayout,"Заявки",false);
-        mapButton = technicianList.buttonCreate(mainLayout,"Карта",false);
+
+
+        LinearLayout layout = (LinearLayout) technicianList.twoButtonCreate(mainLayout,"Заявки","Карта",selectButton,mapButton);
+        selectButton = (Button) layout.getChildAt(0);
+        mapButton = (Button) layout.getChildAt(1);
+        mainLayout.addView(layout);
+        System.out.println("selectButton"+selectButton);
+        System.out.println("mapButton"+mapButton);
     }
+
+    ArrayList<String> arrTechnicianTitle = new ArrayList<>();
+    ArrayList<Technician> listTechnician = new ArrayList<>();
 
     public void fillingView() {
 
-        List<Technician> listTitle = new ArrayList<>();
+
 
         base.showDialogDownloadPage();
 
@@ -120,7 +135,7 @@ public class TechnicianFragment extends Fragment {
                 new NetBackDefault() {
             @Override
             public void onSuccess(Object val) {
-                listTitle.addAll((EntityList<Technician>) val);
+                listTechnician.addAll((EntityList<Technician>) val);
 
             }
         });
@@ -131,9 +146,35 @@ public class TechnicianFragment extends Fragment {
                     @Override
                     public void onSuccess(Object val) {
                         facilityLists = (FacilityList) val;
+                        System.out.println("hi!!!");
 
-                        setAllSpinner(listTitle);
+                        for(Technician technician : listTechnician){
+                            System.out.println("val:"+technician);
+                            arrTechnicianTitle.add(technician.getTitle());
+                        }
+
+//                        LinearLayout layout = technicianList.createListBox("v", arrTechnicianTitle, 0, new I_ListBoxListener() {
+//                            @Override
+//                            public void onSelect(int index) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onLongSelect(int index) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onCancel() {
+//
+//                            }
+//                        });
+
+                        //mainLayout.addView(layout);
+                        setAllSpinner(listTechnician);
+                        System.out.println("зачему?");
                         base.cancelDialogDownloadPage();
+
                     }
 
                     @Override
@@ -142,62 +183,160 @@ public class TechnicianFragment extends Fragment {
                     }
                 });
 
+
+
     }
 
     String selectedFacility = "";
     String currentTechnician = "";
+    boolean flag = true;
 
     public void setAllSpinner(List<Technician> technicianArr) {
-        List<String> arrTechnicianTitle = new ArrayList<>();
+        ArrayList<String> arrTechnicianTitle = new ArrayList<>();
+        System.out.println("Пачему1?");
 
 
         for(Technician technician : technicianArr){
+            System.out.println("val:"+technician);
             arrTechnicianTitle.add(technician.getTitle());
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(base.getApplicationContext(), R.layout.item_spinner_text_view,
-                R.id.textViewSpinner,arrTechnicianTitle);
-        adapter.setDropDownViewResource(R.layout.item_spinner_text_view);
-        titleSpinner.setAdapter(adapter);
-        titleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//        dialog = new ListBoxDialog( base, arrTechnicianTitle, "---", new I_ListBoxListener() {
+//            @Override
+//            public void onSelect(int index) {
+//
+//            }
+//
+//            @Override
+//            public void onLongSelect(int index) {
+//
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//
+//            }
+//        });
+//
+//        titleSpinner.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dialog.create();
+//            }
+//        });
+
+
+
+        //LinearLayout layout = create("---", arrTechnicianTitle, 0, new I_ListBoxListener());
+
+        TextView selector =(TextView)technicianListBox.getChildAt(0);
+        TextView info =(TextView)technicianListBox.getChildAt(1);
+        System.out.println("selector"+selector);
+        System.out.println("info"+info);
+
+        TextView objSelector =(TextView)objListBox.getChildAt(0);
+        TextView objInfo =(TextView)objListBox.getChildAt(1);
+        System.out.println("objSelector"+objSelector);
+        System.out.println("objInfo"+objInfo);
+        selector.clearComposingText();
+        ArrayList<String> objectArr = new ArrayList<>();
+        technicianList.fillingListBox(info, selector, arrTechnicianTitle,0, new I_ListBoxListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                currentTechnician = (String)adapterView.getItemAtPosition(i);
-                List<String> objectArr = new ArrayList<>();
+            public void onSelect(int index) {
+                System.out.println("index:"+index);
+//                posEdit.setText(technicianArr.get(index).getStartWorkDate().monthToString());
+//                statEdit.setText(Values.TStateList[technicianArr.get(index).tState()]);
+//                expEdit.setText((String.valueOf(technicianArr.get(index).getWorkStanding())));
+
+              //  currentTechnician = arrTechnicianTitle.get(index);
+
+                fillingViews(index);
+
 
                 for(Facility facility : facilityLists) {
+                    System.out.println("facility"+facility.getTitle()+"nameFacility:"+facility.getTechnician().getTitle());
                     if(currentTechnician.equals(facility.getTechnician().getTitle())){
                         objectArr.add(facility.getTitle());
                     }
                 }
 
-                ArrayAdapter<String> adapterObj = new ArrayAdapter<>(base.getApplicationContext(), R.layout.item_spinner_text_view,
-                        R.id.textViewSpinner,objectArr);
-                adapterObj.setDropDownViewResource(R.layout.item_spinner_text_view);
-                objSpinner.setAdapter(adapterObj);
+                    technicianList.fillingListBox(objInfo, objSelector, objectArr,0, new I_ListBoxListener() {
+                        @Override
+                        public void onSelect(int index) {
+                            if(objectArr.size() != 0)
+                                selectedFacility = objectArr.get(index);
+                            else
+                                selectedFacility = "";
+                        }
 
-                objSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        selectedFacility = (String) adapterView.getItemAtPosition(i);
-                    }
+                        @Override
+                        public void onLongSelect(int index) {
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
+                        }
 
-                    }
-                });
+                        @Override
+                        public void onCancel() {
 
-                posEdit.setText(technicianArr.get(i).getStartWorkDate().monthToString());
-                statEdit.setText(Values.TStateList[technicianArr.get(i).tState()]);
-                expEdit.setText((String.valueOf(technicianArr.get(i).getWorkStanding())));
+                        }
+                    });
+
+                    if(flag)
+                        selectedFacility = objectArr.get(0);
+                     flag = false;
+//                ArrayAdapter<String> adapterObj = new ArrayAdapter<>(base.getApplicationContext(), R.layout.text_form_spinner,
+//                        R.id.textViewPanel,objectArr);
+//                adapterObj.setDropDownViewResource(R.layout.text_form_spinner);
+//                objSpinner.setAdapter(adapterObj);
+//
+//
+//                objSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                    @Override
+//                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                        selectedFacility = (String) adapterView.getItemAtPosition(i);
+//                    }
+//
+//                    @Override
+//                    public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//                    }
+//                });
+//
+//                posEdit.setText(technicianArr.get(i).getStartWorkDate().monthToString());
+//                statEdit.setText(Values.TStateList[technicianArr.get(i).tState()]);
+//                expEdit.setText((String.valueOf(technicianArr.get(i).getWorkStanding())));
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {}
+//        });
+
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onLongSelect(int index) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
         });
+        if(flag) {
+
+
+            fillingViews(0);
+        }
+
         processingButton();
 
+    }
+
+    public void fillingViews(int index){
+        posEdit.setText(listTechnician.get(index).getStartWorkDate().monthToString());
+        statEdit.setText(Values.TStateList[listTechnician.get(index).tState()]);
+        expEdit.setText((String.valueOf(listTechnician.get(index).getWorkStanding())));
+        currentTechnician = arrTechnicianTitle.get(index);
     }
 
     public void processingButton() {

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
     <Button
         style="@style/BlackButton"
         android:id="@+id/button_press"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="..."
         android:textSize="@dimen/txt_normal"
         android:layout_margin="5dp"
-        android:layout_columnWeight="1"
         android:paddingLeft="5dp"
         android:textColor="@color/White" />
 
-</GridLayout>
+</LinearLayout>

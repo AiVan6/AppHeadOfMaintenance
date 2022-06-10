@@ -56,32 +56,7 @@ public abstract class SettingsMenuBase {
         });
         return xx;
         }
-    protected LinearLayout createListBox(String name, final ArrayList<String> values, int idx, final I_ListBoxListener lsn){
-        LinearLayout xx=(LinearLayout)base.getLayoutInflater().inflate(R.layout.settings_item_list, null);
-        xx.setPadding(5, 5, 5, 5);
-        final TextView tt=(TextView) xx.findViewById(R.id.dialog_settings_value);
-        tt.setText(""+values.get(idx));
-        TextView img=(TextView)xx.findViewById(R.id.dialog_settings_name);
-        img.setText(name);
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new ListBoxDialog(base,values,"Функ.окна", new I_ListBoxListener(){
-                    @Override
-                    public void onSelect(int index) {
-                        lsn.onSelect(index);
-                        tt.setText(""+values.get(index));
-                        }
-                    @Override
-                    public void onLongSelect(int index) {}
-                    @Override
-                    public void onCancel() {}
-                }).create();
-            }
-        });
-        img.setClickable(true);
-        return xx;
-        }
+
     //-----------------------------------------------------------------------------------------
     public abstract void settingsSave();
     public abstract void createDialog(LinearLayout trmain);

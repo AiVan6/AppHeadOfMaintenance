@@ -102,7 +102,6 @@ public class MapFragment extends Fragment {
                 ctx.loginSettings().getSessionToken(), Values.GetAllModeActual,2), new NetBackDefault(){
             @Override
             public void onSuccess(Object val) {
-                //System.out.println("11"+val);
 
 
 
@@ -112,7 +111,6 @@ public class MapFragment extends Fragment {
 
                     for(Facility facility : (FacilityList) val){
                         if(titleFacility.equals(facility.getTitle()) && facility.getGPS().gpsValid()) {
-                            //System.out.println("facility.getGPS():"+facility.getGPS());
                             ctx.sendGPS(facility.getGPS(), R.drawable.building,facility.getTitle(),true);
 
                         }
@@ -120,7 +118,6 @@ public class MapFragment extends Fragment {
                 }else
                     for(Facility facility : (FacilityList)val){
                         if (facility.getGPS().gpsValid()) {
-                            System.out.println("facility.getGPS():"+facility.getGPS());
                             ctx.sendGPS(facility.getGPS(), R.drawable.building, facility.getTitle(), true);
                         }
                     }
@@ -135,73 +132,37 @@ public class MapFragment extends Fragment {
                 0, 2), new NetBackDefault() {
             @Override
             public void onSuccess(Object val) {
-                //System.out.println("Shift:"+((Shift)val).getGPSList().size());
-                //OwnDateTime dateTime = new OwnDateTime("18.04.2022");
                 technicians.addAll((EntityList<Technician>)val);
 
                 if(bundle != null) {
-                    //technicianTitle = bundle.getString("technicianTitle");
                     enteredDate = bundle.getString("enteredDate");
-                    System.out.println("technicianTitle111"+technicianTitle);
-                    System.out.println("enteredDate111"+enteredDate);
 
-                    System.out.println("111111"+technicians.get(2).getTitle());
+
                     OwnDateTime dateTime = new OwnDateTime(enteredDate);
                     for (Technician technician : technicians) {
                         if (technicianTitle.equals(technician.getTitle())) {
-                            System.out.println("technician123");
                             currentTechnician = technician;
                         }
                     }
-                    //if(technician.getShifts() != null)
-                    System.out.println("date:"+dateTime.timeInMS());
                     new NetCall<Shift>().call(base, ctx.getService().getShiftToDate(ctx.loginSettings().getSessionToken(),
                             currentTechnician.getOid(), dateTime.timeInMS(), 2, true), new NetBackDefault() {
                         @Override
                         public void onSuccess(Object val) {
 
-//                            try {
-//                                Thread.sleep(50000);
-//                            } catch (InterruptedException e) {
-//                                e.printStackTrace();
-//                            }
-
                             Shift shift = (Shift) val;
-                            //.getGPSList().get(1713)
-                            System.out.println("Shift1");
-                            //if (shift.getGPSList().size() != 0) {
-                            System.out.println("Shift2");
-                            for(EntityLink<GPSPoint> point : shift.getGPSList())
-                            //for(int i = 0; i < shift.getGPSList().size(); i++)
-                            {
-                                String text = technicianTitle+"\n"+"["+point.getRef().geoTime().timeToString()+"]";
-                                ctx.sendGPS(point.getRef(), R.drawable.technicianlmg,text, true);
-                                System.out.println("Shift:" + point.getRef());
+
+                            if(shift.getGPSList() == null){//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                                base.popupInfo("У данного техника нет смены");
+                                return;
                             }
-                            //}
+                            for(EntityLink<GPSPoint> point : shift.getGPSList())
+                            {
+                                String text = technicianTitle+point.getRef().geoTime().timeToString();
+                                ctx.sendGPS(point.getRef(), R.drawable.technicianlmg,text, true);
+                            }
                         }
                     });
                 }
-
-//                for(int i = 0; i < ((EntityList<Technician>)val).size(); i++)
-//                    for(int j = 0; j < ((EntityList<Technician>)val).get(i).getShifts().size();j++)
-//                        //if(((EntityList<Technician>)val).get(i).getShifts().get(j).getRef() != null)
-//                            System.out.println("Техник:"+((EntityList<Technician>)val).get(i).getShifts().get(j).getRef().getGPSList().get(0).getRef());
-                //System.out.println("Техник:"+((EntityList<Technician>)val).get(5).getShifts().get);
-
-//6
-
-                //for(int i = 0; i < technicians.size(); i++) {
-                   // System.out.println("1111111111111111:"+technicians.get(i).getShifts());
-//                    new NetCall<Shift>().call(base, ctx.getService().getShift(ctx.loginSettings().getSessionToken(),
-//                            technicians.get(i).getShifts().get(i).getOid(), 2), new NetBackDefault() {
-//                        @Override
-//                        public void onSuccess(Object val) {
-//                            System.out.println("MyShift:"+val);
-//                        }
-//                    });
-                //}
-                //System.out.println("technicianShift:"+(((EntityList<Technician>)val).get(0).getShifts()));
             }
         });
 
@@ -215,45 +176,6 @@ public class MapFragment extends Fragment {
                 selectedTech = technician;
             }
         }
-
-//        new NetCall<Shift>().call(base, ctx.getService().getShiftToDate(ctx.loginSettings().getSessionToken(),
-//                5,dateTime.timeInMS(), 2,true), new NetBackDefault() {
-//            @Override
-//            public void onSuccess(Object val) {
-//                System.out.println("Shift:"+ ((Shift)val).getGPSList());
-//                        Technician technician;
-//            }
-//        });
-
-//        new NetCall<EntityList<Shift>>().call(base, ctx.getService().getShiftList(ctx.loginSettings().getSessionToken(), 0, 0),
-//                new NetBackDefault() {
-//            @Override
-//            public void onSuccess(Object val) {
-//              //  Shift shift = (Shift) val;
-////                System.out.println("state:"+shift.getStates());
-////                EntityLinkList<GPSPoint> gps = shift.getGPSList();
-////                for(EntityLink<GPSPoint> jps : gps){
-////                    System.out.println("Ref: "+jps.getRef());
-////                }
-//
-//                //for(Shift shift1 : (EntityList<Shift>)val){
-//                for(int i = 0; i< ((EntityList<Shift>)val).size(); i++){
-//                    if(((EntityList<Shift>)val).get(i).getGPSList().size() != 0)
-//                        for (int j = 0; j < ((EntityList<Shift>)val).get(i).getGPSList().size();j++) {
-//                            EntityLink<GPSPoint> point = (EntityLink<GPSPoint>)(((EntityList<Shift>) val).get(i).getGPSList())
-//                                    .get(j);
-//                            GPSPoint g_point = point.getRef();
-//                            System.out.println("Красаучег брат!: " +point);
-//                        }
-//                }
-//
-//                //technician.getShifts().get(0).getRef().getGPSList().get(0).getRef().geox()
-//
-//                    //System.out.println("Shift222:"+shift.getGPSList().get(0).getRef());
-//
-//                //System.out.println("888888!:"+shift.getGPSList().geo);
-//            }
-//        });
 
 
 
@@ -271,41 +193,13 @@ public class MapFragment extends Fragment {
             moveToSelf();
         }
         catch(Exception e1){
-            System.out.println(e1.toString()); //?????????????????????????????????
+            base.popupInfo(e1.toString());
         }
 
-//        fragmentEmpty = new FragmentEmpty();
-
-//        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//        fragmentTransaction.add(R.id.mapview340,fragmentEmpty);
-//        fragmentTransaction.commit();
     }
     String strFid;
     protected void moveToSelf(){
-//        Bundle bundle = getArguments();
-//        if(bundle != null){
-//            System.out.println("2222222222222222222!!");
-//             strFid = bundle.getString("idFacility");
-//             String strTid = bundle.getString("idTech");
-//            new NetCall<Facility>().call(base, ctx.getService().getTechnicianAssignFacilityList(settings.getSessionToken(), Integer.parseInt(strFid), 2), new NetBackDefault() {
-//                @Override
-//                public void onSuccess(Object val) {
-//                    System.out.println(val);
-//                    Facility facility = (Facility) val;
-////                    moveTo(facility.getGPS());
-////                    System.out.println("111111111111111111111111111111!!"+facility.getGPS());
-//                    ctx.sendGPS(facility.getGPS(), R.drawable.building,facility.getTitle(),true);
-//                }
-//            });
-//             //moveToFacility(Integer.parseInt(strFid));
-//            System.out.println("3333333333333!!");
-//        }else
             moveTo(AppData.ctx().getLastGPS());
-    }
-
-    public void moveToFacility(int idF) {
-        System.out.println("111111111111111111111111111111!!");
-
     }
 
     protected GPSPoint getDefaultLocation(){
@@ -316,7 +210,6 @@ public class MapFragment extends Fragment {
         if (pp==null || !pp.gpsValid())
             return;
         Point point =  new Point(pp.geoy(),pp.geox());
-        //Point point =  new Point(54.96781445,82.95159894278376);
         moveTo(point);
     }
     protected void moveTo(Point point) {
@@ -354,16 +247,11 @@ public class MapFragment extends Fragment {
         tt.setLines(cnt);
         tt.setTextSize(15);
         tt.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        //text += "\n"+point.getLatitude()+" "+point.getLatitude();
         tt.setText(text);
         facilityTitle = text;
-        //System.out.println("dsfdlfmsdlfsmdfoldsmfolsdmclsdcml");
         //------------------------------------------------------------------------------------------
-        //final ViewProvider viewProvider = new ViewProvider(textView);
         final ViewProvider viewProvider = new ViewProvider(xx);
-        //Point newPoint = new Point (point.getLatitude(), point.getLongitude()+0.0001);
         Point newPoint = new Point (point.getLatitude()-0.00005, point.getLongitude());
-        //System.out.println("point.getLongitude()"+point.getLongitude());
         final PlacemarkMapObject viewPlacemark = mapObjects.addPlacemark(newPoint, viewProvider);
         viewProvider.snapshot();
         viewPlacemark.setView(viewProvider);
@@ -391,7 +279,6 @@ public class MapFragment extends Fragment {
             }
         }, AppData.PopupShortDelay*1000);
 
-        System.out.println("mapObjectsmapObjectsmapObjects:"+mapObjects);
     }
 
     protected void paintSelf(){
@@ -399,10 +286,8 @@ public class MapFragment extends Fragment {
         if (!geo.gpsValid()) return;
         if (myPlace!=null)
             mapObjects.remove(myPlace);
-        System.out.println("geogeogeogeogeogeoY:"+geo.geoy());
-        System.out.println("geogeogeogeogeogeoX:"+geo.geox());
+
         myPlace = mapObjects.addPlacemark(new Point(geo.geoy(),geo.geox()));
-        //myPlace = mapObjects.addPlacemark(new Point(54.96781445,82.95159894278376));
         myPlace.setOpacity(0.5f);
         myPlace.setIcon(ImageProvider.fromResource(getActivity(),R.drawable.user_location_gps));
         myPlace.setDraggable(false);         // ПЕРЕМЕЩЕНИЕ !!!!!!!!!!!!
@@ -427,7 +312,6 @@ public class MapFragment extends Fragment {
         circle.setOpacity(0.5f);
         circle.setIcon(ImageProvider.fromResource(getActivity(),icon));
         circle.setDraggable(false);
-        //System.out.println("idx1:"+idx);
         circle.addTapListener(new MapObjectTapListener() {
             @Override
             public boolean onMapObjectTap(MapObject mapObject, Point point) {
@@ -438,7 +322,6 @@ public class MapFragment extends Fragment {
             }
         });
 
-        //System.out.println("param"+text+" "+gp+" "+moveTo+" "+icon+" "+idx+" "+back);
         if (moveTo) moveTo(gp);
         return circle;
     }

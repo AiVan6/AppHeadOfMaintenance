@@ -284,6 +284,10 @@
         "source": "C:\\Users\\Ivan\\.gradle\\caches\\transforms-2\\files-2.1\\58dc4105bd50e32c6aa940e9d9becb69\\maps.mobile-4.0.0-lite\\res\\drawable\\yandex_logo_en_white.png"
     },
     {
+        "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\layout_tow_button.xml.flat",
+        "source": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\src\\main\\res\\layout\\tow_button.xml"
+    },
+    {
         "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Ivan\\.gradle\\caches\\transforms-2\\files-2.1\\95b0ab96619d460e4319a6c47c10af3d\\appcompat-1.4.0\\res\\drawable-mdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
@@ -590,6 +594,10 @@
     {
         "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_form_normal.xml.flat",
         "source": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\src\\main\\res\\drawable\\button_form_normal.xml"
+    },
+    {
+        "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_text_view.xml.flat",
+        "source": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\src\\main\\res\\layout\\item_text_view.xml"
     },
     {
         "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\layout_mtrl_calendar_vertical.xml.flat",
@@ -1038,6 +1046,10 @@
     {
         "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_bottom_sheet_dialog.xml.flat",
         "source": "C:\\Users\\Ivan\\.gradle\\caches\\transforms-2\\files-2.1\\ffa99719fbb77309ec5316b6cf16effe\\material-1.4.0\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\layout_image_button.xml.flat",
+        "source": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\src\\main\\res\\layout\\image_button.xml"
     },
     {
         "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
@@ -2530,6 +2542,10 @@
     {
         "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\drawable_btn_checkbox_checked_mtrl.xml.flat",
         "source": "C:\\Users\\Ivan\\.gradle\\caches\\transforms-2\\files-2.1\\95b0ab96619d460e4319a6c47c10af3d\\appcompat-1.4.0\\res\\drawable\\btn_checkbox_checked_mtrl.xml"
+    },
+    {
+        "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\layout_text_form_spinner.xml.flat",
+        "source": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\src\\main\\res\\layout\\text_form_spinner.xml"
     },
     {
         "merged": "C:\\gitProga\\my\\AppHeadOfMaintenance\\app\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_fab_transformation_sheet_expand_spec.xml.flat",
